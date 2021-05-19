@@ -11,3 +11,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ADD_LABEL: "approved"
           REMOVE_LABEL: "awaiting%20review"
+      - name: Deploy Netlify
+        if: ${{ !!env.NETLIFY_URL }}
+        uses: jasongitmail/fast-webhook@v1.1.4
+        with:
+          url: ${{ env.NETLIFY_URL }}
+        
